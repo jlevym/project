@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'project';
+  title = 'project'
+
+  onHeaderStatusChange(shouldShowRecipe: {showRecipe: number}) {
+    console.log('showRecipe has been changed ' + shouldShowRecipe.showRecipe);
+  }
 }
+
