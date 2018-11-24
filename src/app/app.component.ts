@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project'
+  shouldShowRecipe = false;
 
-  onHeaderStatusChange(shouldShowRecipe: {showRecipe: number}) {
-    console.log('showRecipe has been changed ' + shouldShowRecipe.showRecipe);
+  onRoutingChange(shouldShowRecipe: boolean) {
+    this.shouldShowRecipe = shouldShowRecipe;
   }
 }
 

@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header (showRecipeChanged)="onRoutingChange($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipe></app-recipe>
-      <app-shopping-list></app-shopping-list>
+      <app-recipe [hidden]="shouldShowRecipe === false"></app-recipe>
+      <app-shopping-list [hidden]="shouldShowRecipe === true"></app-shopping-list>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-header',
@@ -7,17 +8,20 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   showRecipe = false;
+  @Output() showRecipeChanged = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit() {
   }
+
   toRecipe() {
     this.showRecipe = true;
-    console.log('clicked Recipe ' + this.showRecipe);
+    this.showRecipeChanged.emit(this.showRecipe);
   }
 
   toShoppingList() {
-    console.log('clicked ShoppingList');
+    this.showRecipe = false;
+    this.showRecipeChanged.emit(this.showRecipe);
   }
 }
