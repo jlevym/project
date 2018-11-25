@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project'
-  shouldShowRecipe = false;
+  shouldShowRecipe = 'recipe';
 
-  onRoutingChange(shouldShowRecipe: boolean) {
+  onRoutingChange(shouldShowRecipe: string) {
     this.shouldShowRecipe = shouldShowRecipe;
   }
 }

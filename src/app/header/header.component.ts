@@ -7,21 +7,16 @@ import {isBoolean} from "util";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  showRecipe = false;
-  @Output() showRecipeChanged = new EventEmitter<boolean>();
+  selection = 'recipe';
+  @Output() showRecipeChanged = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  toRecipe() {
-    this.showRecipe = true;
-    this.showRecipeChanged.emit(this.showRecipe);
-  }
-
-  toShoppingList() {
-    this.showRecipe = false;
-    this.showRecipeChanged.emit(this.showRecipe);
+  toSelector(selector: string) {
+    this.selection = selector;
+    this.showRecipeChanged.emit(this.selection);
   }
 }
