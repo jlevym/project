@@ -14,7 +14,4 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
   }
-  onRecipeUploaded(recipe: Recipe) {
-    this.currentRecipe = recipe;
-  }
 }
