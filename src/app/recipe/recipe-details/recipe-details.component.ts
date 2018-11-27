@@ -8,12 +8,17 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-
+  isOpen = false;
   @Input() recipe: Recipe;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onOpen() {
+    console.log('onOpen clicked');
+
   }
 
 }
