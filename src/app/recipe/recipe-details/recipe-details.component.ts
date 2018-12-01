@@ -23,9 +23,6 @@ export class RecipeDetailsComponent implements OnInit {
 
   addToShoppingList() {
     const ingredients = this.recipe.ingredients;
-    for (let i = 0; i < ingredients.length; i++) {
-      this.shoppingListService.pushIngredients(ingredients[i]);
-    }
-    this.shoppingListService.changeViewToShoppingList.emit('shopping-list');
+      this.shoppingListService.addIngredients(ingredients);
   }
 }
