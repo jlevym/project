@@ -3,6 +3,7 @@ import {EventEmitter} from '@angular/core';
 
 export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
+  changeViewToShoppingList = new EventEmitter<string>();
 
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
