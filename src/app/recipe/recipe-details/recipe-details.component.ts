@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 import {ShoppingListService} from '../../shopping-list/shopping-list.service';
 import {RecipeService} from '../recipe.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-details',
@@ -20,8 +20,11 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    this.recipe = this.recipeService.getRecipe(id);
+    this.route.params
+      .subscribe((params: Params) => {
+        const id = +params['id'];
+        this.recipe = this.recipeService.getRecipe(id);
+      });
   }
 
   addToShoppingList() {
