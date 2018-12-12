@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {NgForm} from '@angular/forms';
 
@@ -41,7 +41,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
 
-  submitNewItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     const listname = form.value.listname;
     const listamount = form.value.listamount
     const newIngredient = new Ingredient(listname, listamount);
@@ -51,6 +51,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.shoppingListService.pushIngredients(newIngredient);
     }
     console.log(form);
+    this.editMode = false;
     form.reset();
   }
 
