@@ -10,14 +10,14 @@ export class RecipeService {
     new Recipe(
       'Meat Dish',
       ' Sushi Eagle with Rice',
-      '../../../../assets/eagle.jpg',
+      '/assets/eagle.jpg',
       [
         new Ingredient('Meat', 1),
         new Ingredient('Rice', 4)
       ]),
     new Recipe('Squirrel delight',
       'Baked Squirrel on toast',
-      '../../../../assets/squirrel.jpg',
+      '/assets/squirrel.jpg',
       [
         new Ingredient('Squirrel', 4),
         new Ingredient('chips', 50)

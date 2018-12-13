@@ -34,6 +34,5 @@ export class RecipeEditComponent implements OnInit {
 
   onSave() {
     this.recipeService.addRecipe(this.recipeForm);
-    console.log(this.recipeForm);
   }
 }
