@@ -1,7 +1,10 @@
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
+import {FormGroup} from '@angular/forms';
+import {Subject} from 'rxjs';
 
 export class RecipeService {
+  recipeChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -26,5 +29,15 @@ export class RecipeService {
   }
   getRecipe(index: number) {
     return this.recipes[index];
+  }
+  addRecipe(form: FormGroup) {
+    const name = form.value.name;
+    const imagePath = form.value.imagePath;
+    const discription = form.value.description;
+    const recipe = new Recipe( name, discription, imagePath, []);
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+
+    console.log(this.recipes);
   }
 }
