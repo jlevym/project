@@ -37,7 +37,12 @@ export class RecipeService {
     const recipe = new Recipe( name, discription, imagePath, []);
     this.recipes.push(recipe);
     this.recipeChanged.next(this.recipes.slice());
-
     console.log(this.recipes);
   }
+
+  updateRecipe(index: number, updatedRecipe: FormGroup) {
+    this.recipes[index] = updatedRecipe.value;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
 }
