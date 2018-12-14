@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {RecipeService} from './../../recipe/recipe.service';
@@ -14,7 +14,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -31,7 +31,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeName = '';
     let recipePath = '';
     let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    const recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
       // get the clicked recipe and override the default values
@@ -40,7 +40,7 @@ export class RecipeEditComponent implements OnInit {
       recipePath = currentRecipe.imagePath;
       recipeDescription = currentRecipe.description;
       if (currentRecipe['ingredients']) {
-        for (let ingredient of currentRecipe.ingredients) {
+        for (const ingredient of currentRecipe.ingredients) {
           recipeIngredients.push(
             new FormGroup({
               'name': new FormControl(ingredient.name, Validators.required),
@@ -84,5 +84,16 @@ export class RecipeEditComponent implements OnInit {
   } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.router.navigate(['/recipe']);
+  }
+
+  onCancel() {
+    this.recipeForm = new FormGroup({
+      'name': new FormControl(''),
+      'imagePath': new FormControl(''),
+      'description': new FormControl(''),
+      'ingredients': new FormArray([])
+    });
+    this.router.navigate(['/recipe']);
   }
 }
