@@ -20,10 +20,10 @@ export class RecipeEditComponent implements OnInit {
     this.route.params
       .subscribe((params: Params) => {
         this.id = +params['id'];
-        if (params['id'] != null) {
+       /* if (params['id'] != null) {
           this.editMode = true;
-        }
-      /*  this.editMode = params['id'] != null;*/
+        }*/
+        this.editMode = params['id'] != null;
         this.initForm();
       });
   }
@@ -84,16 +84,10 @@ export class RecipeEditComponent implements OnInit {
   } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
-    this.router.navigate(['/recipe']);
+    this.onCancel();
   }
 
   onCancel() {
-    this.recipeForm = new FormGroup({
-      'name': new FormControl(''),
-      'imagePath': new FormControl(''),
-      'description': new FormControl(''),
-      'ingredients': new FormArray([])
-    });
-    this.router.navigate(['/recipe']);
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 }
