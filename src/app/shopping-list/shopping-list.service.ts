@@ -15,16 +15,19 @@ export class ShoppingListService {
 
 constructor(private http: Http) {}
 
-  /*private ingredients: Ingredient[] = [
+  private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
-  ];*/
+  ];
 
-  private ingredients: Ingredient[];
+  setIngredients(ingredients: Ingredient[]) {
+    this.ingredients = ingredients;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
 
-  /*getIngredients() {
+  getIngredients() {
     return this.ingredients.slice();
-  }*/
+  }
 
   getIngredient(index: number) {
     return this.ingredients[index];
@@ -52,16 +55,9 @@ constructor(private http: Http) {}
   }
   fetchIngredients() {
     return this.http.get('https://angular7-udemy-project.firebaseio.com/ingredients.json')
-      .pipe(map(
+      .subscribe(
         (response) => {
-          this.ingredients = response.json();
-          this.ingredientsChanged.next(this.ingredients);
-          return this.ingredients.slice();
-        }
-      ))
-      .pipe(catchError(error => {
-        return throwError('something went wrong server side....');
-
-      }));
+          this.setIngredients(response.json());
+        });
   }
 }

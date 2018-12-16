@@ -26,11 +26,7 @@ export class HeaderComponent {
       );
   }
     onFetch() {
-    this.shoppingListService.fetchIngredients()
-      .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
-      );
+    this.shoppingListService.fetchIngredients();
     this.dataStorageService.fetchRecipes();
   }
 }
