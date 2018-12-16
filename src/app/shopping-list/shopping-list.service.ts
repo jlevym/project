@@ -1,7 +1,7 @@
 import {Ingredient} from '../shared/ingredient.model';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, throwError} from 'rxjs';
 import {Http} from '@angular/http';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 
 @Injectable({
@@ -51,13 +51,17 @@ constructor(private http: Http) {}
     return this.http.put('https://angular7-udemy-project.firebaseio.com/ingredients.json', this.ingredients);
   }
   fetchIngredients() {
-    return this.http.get( 'https://angular7-udemy-project.firebaseio.com/ingredients.json')
+    return this.http.get('https://angular7-udemy-project.firebaseio.com/ingredients.json')
       .pipe(map(
         (response) => {
           this.ingredients = response.json();
           this.ingredientsChanged.next(this.ingredients);
           return this.ingredients.slice();
         }
-      ));
+      ))
+      .pipe(catchError(error => {
+        return throwError('something went wrong server side....');
+
+      }));
   }
 }
