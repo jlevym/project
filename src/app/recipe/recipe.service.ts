@@ -15,9 +15,9 @@ export class RecipeService {
 
   constructor(private http: Http) {}
 
-  private recipes: Recipe[];
+  /*private recipes: Recipe[];*/
 
- /* private recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe(
       'Meat Dish',
       ' Sushi Eagle with Rice',
@@ -33,7 +33,7 @@ export class RecipeService {
         new Ingredient('Squirrel', 4),
         new Ingredient('chips', 50)
       ])
-  ];*/
+  ];
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
