@@ -1,8 +1,8 @@
 import {Ingredient} from '../shared/ingredient.model';
-import {Observable, Subject, throwError} from 'rxjs';
+import {Subject} from 'rxjs';
 import {Http} from '@angular/http';
-import {catchError, map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
   startEditing = new Subject<number>();
 
-constructor(private http: Http) {}
+constructor(private http: Http, private authService: AuthService) {}
 
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
@@ -51,10 +51,12 @@ constructor(private http: Http) {}
     this.ingredientsChanged.next(this.ingredients.slice());
   }
   saveIngredients() {
-    return this.http.put('https://angular7-udemy-project.firebaseio.com/ingredients.json', this.ingredients);
+    const token = this.authService.getToken();
+    return this.http.put('https://angular7-udemy-project.firebaseio.com/ingredients.json?auth=' + token, this.ingredients);
   }
   fetchIngredients() {
-    return this.http.get('https://angular7-udemy-project.firebaseio.com/ingredients.json')
+    const token = this.authService.getToken();
+    return this.http.get('https://angular7-udemy-project.firebaseio.com/ingredients.json?auth=' + token)
       .subscribe(
         (response) => {
           this.setIngredients(response.json());
