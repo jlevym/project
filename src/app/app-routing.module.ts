@@ -13,8 +13,8 @@ import {SigninComponent} from './auth/signin/signin.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipe', pathMatch: 'full' },
   { path: 'recipe', component: RecipeComponent, children: [
-      {path: '', component: RecipeStartComponent, resolve: {recipe: RecipeResolverService}},
-      /*{path: '', component: RecipeStartComponent},*/
+     /* {path: '', component: RecipeStartComponent, resolve: {recipe: RecipeResolverService}},*/
+      {path: '', component: RecipeStartComponent},
       {path: 'new', component: RecipeEditComponent},
       {path: ':id', component: RecipeDetailsComponent},
       {path: ':id/edit', component: RecipeEditComponent}

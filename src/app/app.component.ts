@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private dataStorageService: DataStorageService, private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
-    this.shoppingListService.fetchIngredients();  // i put this here to load from database - not in lecture!
-    this.dataStorageService.fetchRecipes();  // same as above
+    /*this.shoppingListService.fetchIngredients();
+    this.dataStorageService.fetchRecipes();  */
 
     firebase.initializeApp({
       apiKey: 'AIzaSyCM_5f2J8Shgylb5jQIxyCQRWiXW-uFXQ0',
