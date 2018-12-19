@@ -21,7 +21,6 @@ export class DataStorageService {
     return this.http.put('https://angular7-udemy-project.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes());
   }
   fetchRecipes() {
-
     const token = this.authService.getToken();
     this.http.get('https://angular7-udemy-project.firebaseio.com/recipes.json?auth=' + token)
     // implement pipe(map to check that each recipe has ingredietns.....

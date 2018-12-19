@@ -2,6 +2,7 @@
 import {Component} from '@angular/core';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {DataStorageService} from '../shared/data-storage.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,10 @@ import {DataStorageService} from '../shared/data-storage.service';
 export class HeaderComponent {
 
 
-  constructor(private shoppingListService: ShoppingListService, private dataStorageService: DataStorageService) {}
+  constructor(private shoppingListService: ShoppingListService,
+              private dataStorageService: DataStorageService,
+              private authService: AuthService
+  ) {}
 
   onSave() {
     this.shoppingListService.saveIngredients()
@@ -29,4 +33,5 @@ export class HeaderComponent {
     this.shoppingListService.fetchIngredients();
     this.dataStorageService.fetchRecipes();
   }
+
 }
