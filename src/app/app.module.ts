@@ -23,7 +23,6 @@ import {ShoppingListModule} from './shopping-list/shopping-list-module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     HttpModule,
     RecipesModule,
