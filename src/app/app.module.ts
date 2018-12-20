@@ -11,22 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 import {RecipeService} from './recipe/recipe.service';
 import {HttpModule} from '@angular/http';
 import {DataStorageService} from './shared/data-storage.service';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
 import {RecipesModule} from './recipe/recipes.module';
 import {SharedModule} from './shared/shared.module';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ShoppingListComponent,
-    ShoppingEditComponent,
-    SignupComponent,
-    SigninComponent,
-
+    ShoppingEditComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +30,8 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     HttpModule,
     RecipesModule,
-    SharedModule
+    SharedModule,
+    AuthModule
   ],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
