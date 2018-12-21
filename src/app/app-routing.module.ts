@@ -1,6 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {HomeComponent} from './core/home/home.component';
+import {RecipesRoutingModule} from './recipe/recipes-routing.module';
 
 const appRoutes: Routes = [
  /* { path: '', redirectTo: '/recipe', pathMatch: 'full' },*/
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [RecipesRoutingModule]
 })
 
 export class AppRoutingModule {
