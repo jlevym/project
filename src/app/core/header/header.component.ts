@@ -1,8 +1,8 @@
 /* tslint:disable:max-line-length */
 import {Component} from '@angular/core';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
-import {DataStorageService} from '../shared/data-storage.service';
-import {AuthService} from '../auth/auth.service';
+import {ShoppingListService} from '../../shopping-list/shopping-list.service';
+import {DataStorageService} from '../../shared/data-storage.service';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
