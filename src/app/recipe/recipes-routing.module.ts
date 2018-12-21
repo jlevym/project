@@ -8,7 +8,7 @@ import {NgModule} from '@angular/core';
 
 
 const recipesRoutes: Routes = [
-  { path: 'recipe', component: RecipeComponent, children: [
+  { path: '', component: RecipeComponent, children: [
       /* {path: '', component: RecipeStartComponent, resolve: {recipe: RecipeResolverService}},*/
       {path: '', component: RecipeStartComponent},
       {path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard]},
