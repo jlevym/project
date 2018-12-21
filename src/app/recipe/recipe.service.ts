@@ -1,7 +1,5 @@
 import {Recipe} from './recipe.model';
-import {Subject, throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-import {Http} from '@angular/http';
+import {Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 
@@ -13,7 +11,7 @@ export class RecipeService {
   recipeChanged = new Subject<Recipe[]>();
 
 
-  constructor(private http: Http) {}
+ /* constructor(private http: Http) {}*/
 
   /*private recipes: Recipe[];*/
 
