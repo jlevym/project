@@ -4,7 +4,7 @@ import {map} from 'rxjs/operators';
 import {RecipeService} from '../recipe/recipe.service';
 import {Recipe} from '../recipe/recipe.model';
 import {AuthService} from '../auth/auth.service';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
 
 
 
@@ -18,11 +18,16 @@ export class DataStorageService {
 
   saveRecipes() {
     const token = this.authService.getToken();
-    return this.httpClient.put('https://angular7-udemy-project.firebaseio.com/recipes.json',  this.recipeService.getRecipes(),
+    /*return this.httpClient.put('https://angular7-udemy-project.firebaseio.com/recipes.json',  this.recipeService.getRecipes(),
       {
         observe: 'body',
         params: new HttpParams().set('auth', token)
-      });
+      });*/
+    const req =  new HttpRequest('PUT', 'https://angular7-udemy-project.firebaseio.com/recipes.json',
+      this.recipeService.getRecipes(),
+      {reportProgress: true, params: new HttpParams().set('auth', token)})
+      return this.httpClient.request(req);
+
   }
   fetchRecipes() {
     const token = this.authService.getToken();
