@@ -17,15 +17,14 @@ export class DataStorageService {
 
 
   saveRecipes() {
-    const token = this.authService.getToken();
+    /*const token = this.authService.getToken();*/
     /*return this.httpClient.put('https://angular7-udemy-project.firebaseio.com/recipes.json',  this.recipeService.getRecipes(),
       {
         observe: 'body',
         params: new HttpParams().set('auth', token)
       });*/
     const req =  new HttpRequest('PUT', 'https://angular7-udemy-project.firebaseio.com/recipes.json',
-      this.recipeService.getRecipes(),
-      {reportProgress: true, params: new HttpParams().set('auth', token)})
+      this.recipeService.getRecipes(), {reportProgress: true});
       return this.httpClient.request(req);
 
   }
